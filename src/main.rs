@@ -197,54 +197,6 @@ impl Engine {
         }
     }
 
-    /// TODO: Write docs
-    // pub async fn boot(&mut self) -> Result<(), InitializationError> {
-    //     let databases: Vec<String>;
-    //     match tokio::fs::read_to_string(&self.data_directory.join("db_info.index")).await {
-    //         Ok(content) => {
-    //             // Working with existing database
-    //             databases = content
-    //                 .split('\n')
-    //                 .map(|s| s.into())
-    //                 .filter(|s| s != "")
-    //                 .collect::<Vec<String>>();
-    //         }
-    //         Err(err) => {
-    //             // Initializing files if not found
-    //             if err.kind() == std::io::ErrorKind::NotFound {
-    //                 databases = vec![];
-    //                 tokio::fs::create_dir_all(&self.data_directory).await?;
-    //                 tokio::fs::write(&self.data_directory.join("db_info.index"), "").await?;
-    //             } else {
-    //                 databases = vec![];
-    //                 Err(err)?
-    //             }
-    //         }
-    //     };
-    //
-    //     for db in databases {
-    //         let db_path = self.data_directory.join(&db);
-    //         let exists = db_path.exists();
-    //         if !exists || !self.data_directory.is_dir() {
-    //             return Err(InitializationError::new_inconsistency_error(
-    //                 db,
-    //                 "directory",
-    //                 if exists {
-    //                     "not a directory"
-    //                 } else {
-    //                     "not exists"
-    //                 },
-    //             )
-    //                 .into());
-    //         } else {
-    //             let database = Arc::new(RwLock::new(Database::load_from_path(&db_path).await?));
-    //             self.databases.insert(db.clone(), database);
-    //         }
-    //     }
-    //
-    //     Ok(())
-    // }
-
     pub async fn create_database(
         &mut self,
         name: String,
