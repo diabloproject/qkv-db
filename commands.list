@@ -1,0 +1,4 @@
+CREATE DATABASE b WITH qkv_vec_size = 512 // Create database
+;
+CREATE BUCKET a INSIDE b // Create bucket
+;
